@@ -31,3 +31,32 @@ plot_landings_value <- ggplot(landings_overview, aes(y = total_value/1000, x = `
        x = NULL)
 ggsave(plot_landings_value, file = "2_landings/plot_landings_value.png", height = 8, width = 14, units = "cm", dpi = 1200)
 
+
+landings_species <- landings %>%
+  filter(`Port Nationality` %in% uk_nations) %>%
+  group_by(`Port Nationality`, `Species Group`) %>%
+  summarise(total_landings = sum(`Landed weight (tonnes)`), total_value = sum(`Value(£000s)`))
+
+plot_species_landings <- ggplot(landings_species, aes(x = `Port Nationality`, y = total_landings/1000, fill = `Species Group`)) +
+  geom_col(position = position_dodge()) +
+#  scale_y_continuous(labels = scales::comma) +
+  scale_fill_manual(values = c("#666666", "#D55E00", "#0072B2")) +
+  theme_ipsum(plot_margin = margin(7,7,7,7)) +
+  theme(panel.grid.minor = element_blank(), panel.grid.major.x = element_blank(), legend.position = "bottom") +
+  labs(y = "Total landings (thousand tonnes)",
+       x = NULL,
+       fill = NULL)
+ggsave(plot_species_landings, file = "2_landings/plot_species_landings.png", height = 8, width = 14, units = "cm", dpi = 1200)
+
+
+plot_species_value <- ggplot(landings_species, aes(x = `Port Nationality`, y = total_value/1000, fill = `Species Group`)) +
+  geom_col(position = position_dodge()) +
+  #  scale_y_continuous(labels = scales::comma) +
+  scale_fill_manual(values = c("#666666", "#D55E00", "#0072B2")) +
+  theme_ipsum(plot_margin = margin(7,7,7,7)) +
+  theme(panel.grid.minor = element_blank(), panel.grid.major.x = element_blank(), legend.position = "bottom") +
+  labs(y = "Total landings (£millions)",
+       x = NULL,
+       fill = NULL)
+ggsave(plot_species_value, file = "2_landings/plot_species_value.png", height = 8, width = 14, units = "cm", dpi = 1200)
+
