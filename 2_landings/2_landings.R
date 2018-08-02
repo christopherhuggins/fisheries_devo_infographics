@@ -81,12 +81,14 @@ plot_landings_by_region <- ggplot(merge_nuts2) +
   geom_sf(aes(fill = total_landings), size = 0.2, inherit.aes = FALSE) +
   scale_fill_gradient(name="Total landings\n(tonnes)", limits = c(0,200000), low="white", high="black", trans = "sqrt", label = scales::comma) +
   theme_ipsum(plot_margin = margin(7,7,7,7)) +
-  theme(panel.grid.major = element_line(colour = "white"), panel.grid.minor = element_line(colour = "white"), panel.background = element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank(),axis.ticks=element_blank())
+  theme(panel.grid.major = element_line(colour = "white"), panel.grid.minor = element_line(colour = "white"), panel.background = element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank(),axis.ticks=element_blank()) +
+  labs(title = "Weight of landings by region")
 ggsave(plot_landings_by_region, file = "2_landings/plot_landings_by_region.png", height = 16.71, width = 13.55, units = "cm", dpi = 1200)
 
 plot_value_by_region <- ggplot(merge_nuts2) +
   geom_sf(aes(fill = total_value/1000), size = 0.2, inherit.aes = FALSE) +
   scale_fill_gradient(name="Total landings\n(£millions)", low="white", high="black", limits = c(0,250), trans = "sqrt") +
   theme_ipsum(plot_margin = margin(7,7,7,7)) +
-  theme(panel.grid.major = element_line(colour = "white"), panel.grid.minor = element_line(colour = "white"), panel.background = element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank(),axis.ticks=element_blank())
+  theme(panel.grid.major = element_line(colour = "white"), panel.grid.minor = element_line(colour = "white"), panel.background = element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank(),axis.ticks=element_blank()) +
+  labs(title = "Value of landings by region")
 ggsave(plot_value_by_region, file = "2_landings/plot_value_by_region.png", height = 16.71, width = 13.55, units = "cm", dpi = 1200)
