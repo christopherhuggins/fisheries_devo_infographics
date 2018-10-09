@@ -3,7 +3,7 @@ library(tidyverse)
 library(hrbrthemes)
 
 #Data available from Marine Management Organisation, https://www.gov.uk/government/statistical-data-sets/uk-and-foreign-vessels-landings-by-uk-port-and-uk-vessel-landings-abroad
-landings <- read_xlsx("data/Published_dataset_2017.xlsx")
+landings <- read_xlsx("data/landings/Published_dataset_2017.xlsx")
 
 uk_nations <- c("England", "Northern Ireland", "Scotland", "Wales")
 

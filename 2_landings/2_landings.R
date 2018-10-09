@@ -5,7 +5,7 @@ library(sf)
 
 
 #Data available from Marine Management Organisation, https://www.gov.uk/government/statistical-data-sets/uk-and-foreign-vessels-landings-by-uk-port-and-uk-vessel-landings-abroad
-landings <- read_xlsx("data/Published_dataset_2017.xlsx")
+landings <- read_xlsx("data/landings/Published_dataset_2017.xlsx")
 
 uk_nations <- c("England", "Northern Ireland", "Scotland", "Wales")
 
@@ -63,7 +63,7 @@ ggsave(plot_species_value, file = "2_landings/plot_species_value.png", height = 
 
 
 #NUTS2 Shapefile available from Eurostat, http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts
-nuts2_map <- read_sf("data/ref-nuts-2013-03m.shp/NUTS_RG_03M_2013_3857_LEVL_2.shp", layer = "NUTS_RG_03M_2013_3857_LEVL_2")
+nuts2_map <- read_sf("data/spatial/ref-nuts-2013-03m.shp/NUTS_RG_03M_2013_3857_LEVL_2.shp", layer = "NUTS_RG_03M_2013_3857_LEVL_2")
 
 landings_by_nuts2 <- landings %>%
   filter(`Port Nationality` %in% uk_nations) %>%

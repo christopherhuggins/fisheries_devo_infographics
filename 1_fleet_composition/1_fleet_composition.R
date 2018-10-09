@@ -4,8 +4,8 @@ library(hrbrthemes)
 
 
 #Data available from Marine Management Organisation, https://www.gov.uk/government/collections/uk-vessel-lists
-under10_data <- read_excel("data/Jul_2018_Under_10m_vessel_list.xls", sheet = 1, skip = 4)
-over10_data <- read_excel("data/Jul_2018_Over_10m_vessel_list.xls", sheet = 1, skip = 4)
+under10_data <- read_excel("data/vessels/Jul_2018_Under_10m_vessel_list.xls", sheet = 1, skip = 4)
+over10_data <- read_excel("data/vessels/Jul_2018_Over_10m_vessel_list.xls", sheet = 1, skip = 4)
 
 vessels <- bind_rows(under10_data, over10_data)
 
